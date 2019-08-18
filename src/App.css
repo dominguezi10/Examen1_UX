@@ -1,5 +1,9 @@
 .App {
+  position: absolute;
   text-align: center;
+  background-image: url('Image/fondo.jpg') !important;
+  height: 100% !important;
+  width: 100%;
 }
 
 .App-logo {
@@ -9,18 +13,28 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  height: 80px !important;
+  font-size: 50px;
+  background-color: darkslategrey;
   color: white;
+  text-align: left;
+  padding-left: 2%;
+  font-family: 'Tw Cen MT';
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.Usuario{
+  text-align: center;
+  font-size: 25px;
+  color: brown;
+}
+
+.salida{
+  position: absolute;
 }
 
 @keyframes App-logo-spin {

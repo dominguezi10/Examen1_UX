@@ -4,11 +4,11 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     /*user*/
     this.state = {
-      user:null
+      user: null
     };
 
     this.InicioSesion = this.InicioSesion.bind(this);
@@ -17,9 +17,9 @@ class App extends Component {
   }
 
   /*ciclo de vida del user, esto es propio de react*/
-  componentWillMount(){
-    firebase.auth().onAuthStateChanged(user =>{
-      this.setState({user});
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ user });
     });
   }
 
@@ -28,29 +28,29 @@ class App extends Component {
     const val = new firebase.auth.GoogleAuthProvider();
 
     firebase.auth().signInWithPopup(val)
-    .then(result => console.log('${result.user.email} inicio Sesion!'))
-    .catch(error => console.log('Error!! ${error.code}: ${error.message}'));
+      .then(result => console.log(`${result.user.email} inicio Sesion!`))
+      .catch(error => console.log(`Error!! ${error.code}: ${error.message}`));
   }
 
   /* cerrar sesion*/
-  Salir(){
+  Salir() {
     firebase.auth().signOut()
-    .then(result => console.log('${result.user.email} cerro sesion'))
-    .catch(error => console.log('Error!! ${error.code}: ${error.message}'));
+      .then(result => console.log(`${result.user.email} cerro sesion`))
+      .catch(error => console.log(`Error!! ${error.code}: ${error.message}`));
   }
 
   /*evaluar si esta logueado*/
-  Estado(){
-    if(this.state.user){
+  Estado() {
+    if (this.state.user) {
       return (
-        <div>
+        <div className="Usuario">
           <p>Bienvenido {this.state.user.displayName} </p>
-          <button onClick={this.Salir}>Salir</button> 
+          <button onClick={this.Salir} type="button" class="btn btn-warning" className="salida">Salir</button>
         </div>
 
       );
-    }else{
-      return (<button onClick={this.InicioSesion}> Login </button>);
+    } else {
+      return (<button onClick={this.InicioSesion} type="button" class="btn btn-warning btnLog"> Login </button>);
     }
   }
 
@@ -59,11 +59,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          </header>
+          <p>ST-ore {this.Estado()}</p> 
+        </header>
 
-          <p>Este es mi proyecto !!!!</p>
-          <p> {this.Estado()} </p>
       </div>
     );
   }
