@@ -47,9 +47,9 @@ class App extends Component {
     if (this.state.user) {
       return (
         <div className="Usuario">
-          {this.state.user.displayName}
-          
+          Biendvenid@ {this.state.user.displayName} !
           <button onClick={this.Salir} type="button" class="btn btn-warning">Salir</button>
+          <Perfil />
         </div>
 
       );
