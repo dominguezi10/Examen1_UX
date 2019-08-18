@@ -3,6 +3,7 @@ import firebase from 'firebase';
 //import logo from './logo.svg';
 import './App.css';
 import Perfil from './components/Perfil';
+import Categorias from './components/Categorias';
 
 class App extends Component {
   constructor() {
@@ -31,6 +32,7 @@ class App extends Component {
     firebase.auth().signInWithPopup(val)
       .then(result => console.log(`${result.user.email} inicio Sesion!`))
       .catch(error => console.log(`Error!! ${error.code}: ${error.message}`));
+    //alert("Bienvenido ");
   }
 
   /* cerrar sesion*/
@@ -47,9 +49,10 @@ class App extends Component {
     if (this.state.user) {
       return (
         <div className="Usuario">
-          Biendvenid@ {this.state.user.displayName} !
-          <button onClick={this.Salir} type="button" class="btn btn-warning">Salir</button>
-          <Perfil />
+          <Perfil userName={this.state.user.displayName} userEmail={this.state.user.email}
+            userImage={this.state.user.photoURL} />
+          <button onClick={this.Salir} type="button" class="btn btn-danger btnOf">Salir</button>
+          <Categorias />
         </div>
 
       );

@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class Perfil extends Component {
-    constructor(){//recibo propiedades
+    constructor() {//recibo propiedades
         super()
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div class="card Perfil">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+                <div class="card-header">
+                <img src={this.props.userImage} width="60"  class="imagenPerfil"/>
+                <br/>{this.props.userName} 
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{this.props.userEmail}</li>
+                </ul>
             </div>
         );
     }
