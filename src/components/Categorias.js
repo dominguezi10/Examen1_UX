@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
+import HogarC from './HogarC'
 
 class Categorias extends Component {
-    constructor() {//recibo propiedades
+    constructor() {
         super()
+
+        this.state = {
+            valor: 0
+        };
 
     this.Hogar = this.Hogar.bind(this);
     }
@@ -24,6 +29,10 @@ class Categorias extends Component {
         document.getElementById('cont').style.display = 'none';
     }
     
+    // setiar valor
+    getResponse(valor){
+        this.setState({valor});
+    }
 
     render() {
         return (
@@ -38,13 +47,23 @@ class Categorias extends Component {
             </div>
 
             
-            <div class="contenedor" id="cont" display='block'> jasjLK</div>
+            <div class="contenedor" id="cont" display='block'> 
+            <HogarC num={this.state.valor} callback={this.getResponse.bind(this)}/>
+            </div>
             
-            <div class="contenedor other" id="cont2"> Hola</div>
+            <div class="contenedor other" id="cont2"> Hola
+            </div>
             
             <div class="contenedor other" id="cont3"> Hola3</div>
 
+            <ul class="list-group Valor">
+            <li class="list-group-item"> $ {this.state.valor} <button type="button" class="btn btn-info btnAgregar">Comprar</button> </li>
+            <li class="list-group-item"> Compras Anteroires</li>
+            </ul>
             </div>
+
+
+
         );
     }
 

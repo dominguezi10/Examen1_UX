@@ -32,14 +32,14 @@
 .categorias{
     font-size: 20px;
     margin-left: 4%;
-    margin-top: 1%;
+    margin-top: -1%;
     color:  darkslategrey;
     text-align: center;
 }
 
 .categorias a{
     width: 250px;
-    height: 60px;
+    height: 44px;
 }
 
 .categorias a:hover{
@@ -61,4 +61,26 @@
 
 .other{
     display: none;
+}
+
+.tableD{
+    font-size: 20px;
+}
+
+.btnAgregar{
+    width: 80px;
+    height: 30px;
+}
+
+.Valor{
+    margin-left: 4%;
+    margin-top: 1%;
+    text-align: center;
+}
+
+.Valor li{
+    width: 250px;
+    height: 50px;
+    color:  darkslategrey;
+    font-size: 20px;
 }

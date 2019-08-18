@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class Perfil extends Component {
-    constructor() {//recibo propiedades
+    constructor() {
         super()
     }
 

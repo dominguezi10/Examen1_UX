@@ -53,8 +53,9 @@ class App extends Component {
             userImage={this.state.user.photoURL} />
           <button onClick={this.Salir} type="button" class="btn btn-danger btnOf">Salir</button>
           <Categorias />
-        </div>
 
+
+        </div>
       );
     } else {
       return (<button onClick={this.InicioSesion} type="button" class="btn btn-warning btnLog"> Login </button>);
