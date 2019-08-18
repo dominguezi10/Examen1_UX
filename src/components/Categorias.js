@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import '../App.css';
 import HogarC from './HogarC'
 import RopaC from './RopaC' 
@@ -9,10 +10,12 @@ class Categorias extends Component {
         super()
 
         this.state = {
-            valor: 0
+            valor: 0,
+            compras : []
         };
 
-    this.Hogar = this.Hogar.bind(this);
+        this.Hogar = this.Hogar.bind(this);
+        this.HacerCompra = this.HacerCompra.bind(this);
     }
 
     Hogar(){
@@ -34,6 +37,34 @@ class Categorias extends Component {
     // setiar valor
     getResponse(valor){
         this.setState({valor});
+    }
+
+    componentDidMount() {
+        firebase.database().ref('Compras').on('value',snap=>{
+            /*const compra = snap.val();
+            if(compra != null){
+                this.setState({
+                    compras: compra
+                });
+            }*/
+            this.setState({
+                compras: this.state.compras.concat(snap.val())
+            });
+        });
+    }
+
+
+    HacerCompra(){
+        console.log(this.props.userEmail);
+        const compraUser = {
+            totalCompra : this.state.valor,
+            cliente : this.props.userName,
+            correo : this.props.userEmail
+        };
+
+        const db = firebase.database().ref('Compras');
+        const newCompra  = db.push();
+        newCompra.set(compraUser);
     }
 
     render() {
@@ -63,12 +94,30 @@ class Categorias extends Component {
             </div>
 
             <ul class="list-group Valor">
-            <li class="list-group-item"> $ {this.state.valor} <button type="button" class="btn btn-info btnAgregar">Comprar</button> </li>
-            <li class="list-group-item"> Compras Anteroires</li>
+            <li class="list-group-item"> $ {this.state.valor}  
+            <button type="button" class="btn btn-info btnAgregar" onClick={this.HacerCompra}> Comprar</button> </li>
+            <li class="list-group-item">
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Compras Anteroires</button> </li>
             </ul>
+
+            <div class="modal fade modalT" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Compras Anteroires</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                </div>
             </div>
+            </div>
+            
 
-
+            </div>
 
         );
     }

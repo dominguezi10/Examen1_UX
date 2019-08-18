@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   /*ciclo de vida del user, esto es propio de react*/
-  componentWillMount() {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ user });
     });
@@ -52,8 +52,7 @@ class App extends Component {
           <Perfil userName={this.state.user.displayName} userEmail={this.state.user.email}
             userImage={this.state.user.photoURL} />
           <button onClick={this.Salir} type="button" class="btn btn-danger btnOf">Salir</button>
-          <Categorias />
-
+          <Categorias  userName={this.state.user.displayName} userEmail={this.state.user.email}/>
 
         </div>
       );
