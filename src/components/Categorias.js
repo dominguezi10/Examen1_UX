@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import HogarC from './HogarC'
+import RopaC from './RopaC' 
+import OtrosC from './OtrosC'
 
 class Categorias extends Component {
     constructor() {
@@ -51,10 +53,14 @@ class Categorias extends Component {
             <HogarC num={this.state.valor} callback={this.getResponse.bind(this)}/>
             </div>
             
-            <div class="contenedor other" id="cont2"> Hola
+            <div class="contenedor other" id="cont2"> 
+            <RopaC num={this.state.valor} callback={this.getResponse.bind(this)}/>
             </div>
             
-            <div class="contenedor other" id="cont3"> Hola3</div>
+            
+            <div class="contenedor other" id="cont3"> 
+            <OtrosC num={this.state.valor} callback={this.getResponse.bind(this)}/>
+            </div>
 
             <ul class="list-group Valor">
             <li class="list-group-item"> $ {this.state.valor} <button type="button" class="btn btn-info btnAgregar">Comprar</button> </li>

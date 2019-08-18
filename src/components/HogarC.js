@@ -7,7 +7,6 @@ class HogarC extends Component {
     }
 
     calc(precio) {
-        console.log("Ent");
         this.props.callback(this.props.num + precio);
     }
 
