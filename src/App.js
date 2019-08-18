@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import Perfil from './components/Perfil';
 
 class App extends Component {
   constructor() {
@@ -39,13 +40,16 @@ class App extends Component {
       .catch(error => console.log(`Error!! ${error.code}: ${error.message}`));
   }
 
-  /*evaluar si esta logueado*/
+  /*evaluar si esta logueado 
+  
+  <Perfil user={this.state.user}/>*/
   Estado() {
     if (this.state.user) {
       return (
         <div className="Usuario">
-          <p>Bienvenido {this.state.user.displayName} </p>
-          <button onClick={this.Salir} type="button" class="btn btn-warning" className="salida">Salir</button>
+          {this.state.user.displayName}
+          
+          <button onClick={this.Salir} type="button" class="btn btn-warning">Salir</button>
         </div>
 
       );
@@ -59,7 +63,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>ST-ore {this.Estado()}</p> 
+          <p>ST-ore {this.Estado()}</p>
         </header>
 
       </div>
