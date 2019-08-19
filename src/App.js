@@ -39,7 +39,7 @@ class App extends Component {
   Salir() {
     firebase.auth().signOut()
       .then(result => console.log(`${result.user.email} cerro sesion`))
-      .catch(error => console.log(`Error!! ${error.code}: ${error.message}`));
+      .catch(error => console.log(``));
   }
 
   /*evaluar si esta logueado 

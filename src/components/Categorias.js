@@ -11,11 +11,13 @@ class Categorias extends Component {
 
         this.state = {
             valor: 0,
-            compras : []
+            compras: []
         };
 
         this.Hogar = this.Hogar.bind(this);
         this.HacerCompra = this.HacerCompra.bind(this);
+        //this.componentDidMount = this.componentDidMount.bind(this);
+        //this.esto = this.esto.bind(this);
     }
 
     Hogar(){
@@ -40,17 +42,20 @@ class Categorias extends Component {
     }
 
     componentDidMount() {
-        firebase.database().ref('Compras').on('value',snap=>{
-            /*const compra = snap.val();
+        
+        firebase.database().ref('Compras').on('value', snapshop=>{
+            const compra = snapshop.val();
             if(compra != null){
+                console.log(snapshop.val());
                 this.setState({
-                    compras: compra
+                    compras: this.state.compras.concat(snapshop.val())
                 });
-            }*/
-            this.setState({
-                compras: this.state.compras.concat(snap.val())
-            });
+            }else{
+                console.log("nada");
+            }
+            
         });
+
     }
 
 
@@ -62,9 +67,19 @@ class Categorias extends Component {
             correo : this.props.userEmail
         };
 
+
+        this.setState({
+            compras: this.state.compras.concat(compraUser)
+        });
+        
         const db = firebase.database().ref('Compras');
         const newCompra  = db.push();
+        
         newCompra.set(compraUser);
+
+        this.setState({valor:0});
+        alert("Su compra fue exitosa!");
+
     }
 
     render() {
@@ -110,7 +125,7 @@ class Categorias extends Component {
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    {this.state.compras.length}
                 </div>
                 </div>
             </div>
