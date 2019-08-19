@@ -148,7 +148,7 @@ class Categorias extends Component {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body modalB">
                                 {this.state.compras.map( c=>
                                     <li>{c.cliente} <br/> compra = {c.totalCompra}</li>
                                 )}
