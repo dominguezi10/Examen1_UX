@@ -27,8 +27,8 @@ class App extends Component {
 
   /* para iniciar sesion*/
   InicioSesion() {
-    const val = new firebase.auth.GoogleAuthProvider();
-
+    //const val = new firebase.auth.GoogleAuthProvider();
+    const val = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithPopup(val)
       .then(result => console.log(`${result.user.email} inicio Sesion!`))
       .catch(error => console.log(`Error!! ${error.code}: ${error.message}`));
